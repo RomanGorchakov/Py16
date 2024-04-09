@@ -1,0 +1,33 @@
+{
+    "comment": "Schema for the striped object specification file",
+    "type": "object",
+    "patternProperties": {
+        "^[a-z0-9]+(inv)?$": {
+            "type": "object",
+            "properties": {
+                "race": {
+                    "type": "string",
+                    "pattern": "^[a-z]$",
+                "number": { "$ref": "#/definitions/race_number" },
+                "type": { "$ref": "#/definitions/type_number" }
+                }
+            },
+            "required": ["race", "number", "type"]
+        }
+    },
+    "additionalProperties": false,
+    "definitions": {
+        "race_number": {
+            "type": "number",
+            "minimum": 1,
+            "maximum": 99,
+            "exclusiveMinimum": true
+        },
+        "type_number": {
+            "type": "number",
+            "minimum": 1000,
+            "maximum": 9999,
+            "exclusiveMinimum": true
+        }
+    }
+}
